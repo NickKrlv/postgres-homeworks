@@ -26,3 +26,45 @@ except Exception as ex:
 
 finally:
     conn.close()
+
+try:
+    with psycopg2.connect(
+            dbname="north",
+            user="postgres",
+            password="5r36d6ft",
+            host="localhost",
+            client_encoding='utf-8'
+    ) as conn:
+        with conn.cursor() as cur:
+            for line in customers_data[1:]:
+                cur.execute(
+                    "INSERT INTO customers VALUES (%s, %s, %s)",
+                    (line[0], line[1], line[2])
+                )
+
+except Exception as ex:
+    print("Exception:", ex)
+
+finally:
+    conn.close()
+
+try:
+    with psycopg2.connect(
+            dbname="north",
+            user="postgres",
+            password="5r36d6ft",
+            host="localhost",
+            client_encoding='utf-8'
+    ) as conn:
+        with conn.cursor() as cur:
+            for line in orders_data[1:]:
+                cur.execute(
+                    "INSERT INTO orders VALUES (%s, %s, %s, %s, %s)",
+                    (line[0], line[1], line[2], line[3], line[4])
+                )
+
+except Exception as ex:
+    print("Exception:", ex)
+
+finally:
+    conn.close()
