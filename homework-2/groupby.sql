@@ -16,7 +16,7 @@ LIMIT 10
 -- 3. фамилию, имя и телефон сотрудников, у которых в данных отсутствует регион (см таблицу employees)
 SELECT first_name, last_name, home_phone
 FROM employees
-WHERE region IS NOT NULL
+WHERE region IS NULL
 
 -- 4. количество поставщиков (suppliers) в каждой из стран.
 --Результат отсортировать по убыванию количества поставщиков в стране
